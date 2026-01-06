@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>College Football Empire</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>🏈 College Football Empire</h1>
+      <p class="subtitle">Playable Games + Dynasty | FBS + FCS | NIL, Stadiums, Promotion</p>
+    </header>
+
+    <section id="screen-team-select" class="screen active">
+      <h2>Select Your Team</h2>
+      <p>All FBS and FCS teams will appear here. Tap a team to begin your dynasty.</p>
+      <div id="team-list" class="team-list"></div>
+    </section>
+
+    <section id="screen-dashboard" class="screen">
+      <h2 id="team-name"></h2>
+      <div class="stats">
+        <div><strong>Prestige:</strong> <span id="stat-prestige"></span></div>
+        <div><strong>Budget:</strong> $<span id="stat-budget"></span>M</div>
+        <div><strong>NIL Fund:</strong> $<span id="stat-nil"></span>M</div>
+        <div><strong>Stadium:</strong> <span id="stat-stadium"></span> seats</div>
+        <div><strong>Level:</strong> <span id="stat-level"></span></div>
+      </div>
+
+      <div class="menu">
+        <button onclick="Game.goTo('game')">Play Game</button>
+        <button onclick="Game.goTo('recruiting')">Recruiting</button>
+        <button onclick="Game.goTo('budget')">Budget / NIL</button>
+        <button onclick="Game.goTo('stadium')">Stadium</button>
+        <button onclick="Game.save()">Save</button>
+        <button onclick="Game.reset()">New Dynasty</button>
+      </div>
+    </section>
+
+    <section id="screen-game" class="screen">
+      <h2>Game Day</h2>
+      <p>Strategy-based coaching. Choose your style and play the drive.</p>
+      <div class="controls">
+        <label>Offense:
+          <select id="offense-style">
+            <option value="run">Run</option>
+            <option value="pass">Pass</option>
+            <option value="balanced">Balanced</option>
+          </select>
+        </label>
+        <label>Tempo:
+          <select id="tempo">
+            <option value="slow">Slow</option>
+            <option value="normal" selected>Normal</option>
+            <option value="fast">Hurry-Up</option>
+          </select>
+        </label>
+        <label>Risk:
+          <select id="risk">
+            <option value="safe">Conservative</option>
+            <option value="normal" selected>Normal</option>
+            <option value="aggressive">Aggressive</option>
+          </select>
+        </label>
+        <button onclick="Game.playDrive()">Run Drive</button>
+      </div>
+      <pre id="game-log" class="log"></pre>
+      <button onclick="Game.goTo('dashboard')">Back</button>
+    </section>
+
+    <section id="screen-recruiting" class="screen">
+      <h2>Recruiting (NIL)</h2>
+      <p>Offer NIL packages to attract players.</p>
+      <div id="recruit-list"></div>
+      <button onclick="Game.goTo('dashboard')">Back</button>
+    </section>
+
+    <section id="screen-budget" class="screen">
+      <h2>Budget / NIL</h2>
+      <p>Allocate funds between recruiting, facilities, and NIL.</p>
+      <div class="budget-controls">
+        <label>NIL Spend ($M):
+          <input type="number" id="budget-nil" step="0.1" min="0" />
+        </label>
+        <label>Facilities Spend ($M):
+          <input type="number" id="budget-facilities" step="0.1" min="0" />
+        </label>
+        <button onclick="Game.applyBudget()">Apply</button>
+      </div>
+      <button onclick="Game.goTo('dashboard')">Back</button>
+    </section>
+
+    <section id="screen-stadium" class="screen">
+      <h2>Stadium</h2>
+      <p>Upgrade or build a new stadium using your funds.</p>
+      <div class="stadium-controls">
+        <button onclick="Game.upgradeStadium()">Upgrade (+5k seats)</button>
+      </div>
+      <button onclick="Game.goTo('dashboard')">Back</button>
+    </section>
+
+    <footer>
+      <p>© College Football Empire (Prototype)</p>
+    </footer>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
