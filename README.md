@@ -19,7 +19,7 @@ A browser-based college football dynasty game featuring:
 3. Go to **Settings → Pages**.
 4. Set Source to **Deploy from a branch** → `main` → `/root`.
 5. Save. Your game will be live at:
-   `https://github.com/theonlyschajer-glitch/Hi.git`
+   `https://theonlyschajer-glitch.github.io/Hi/`
 
 ## Notes
 - The current build includes sample teams. Expand `Data.teams` in `game.js` to include ALL FBS and FCS teams.
